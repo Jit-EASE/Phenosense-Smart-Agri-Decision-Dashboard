@@ -46,7 +46,11 @@ def create_gauge(title, val, lo, hi, unit, color):
             ]
         }
     ))
-    fig.update_layout(height=250, margin=dict(l=10, r=10, t=30, b=10))
+    fig.update_layout(
+        autosize=True,
+        margin=dict(l=20, r=20, t=40, b=20),
+        # ensure all text has room
+    )
     return fig
 
 # -----------------------------
@@ -135,14 +139,20 @@ with tabs[0]:
     # Display gauges
     c1, c2, c3 = st.columns(3)
     with c1:
-        st.plotly_chart(create_gauge("Temperature",    data["Temperature (°C)"],    0,40,"°C","red"))
-        st.plotly_chart(create_gauge("Humidity",       data["Humidity (%)"],         0,100,"%","blue"))
+        st.plotly_chart(create_gauge("Temperature",    data["Temperature (°C)"],    0,40,"°C","red"), use_container_width=True,
+    config={"responsive": True})
+        st.plotly_chart(create_gauge("Humidity",       data["Humidity (%)"],         0,100,"%","blue"), use_container_width=True,
+    config={"responsive": True})
     with c2:
-        st.plotly_chart(create_gauge("Germination",    data["Germination Rate (%)"], 0,100,"%","green"))
-        st.plotly_chart(create_gauge("Stress Index",   data["Stress Index (%)"],     0,100,"%","orange"))
+        st.plotly_chart(create_gauge("Germination",    data["Germination Rate (%)"], 0,100,"%","green"), use_container_width=True,
+    config={"responsive": True})
+        st.plotly_chart(create_gauge("Stress Index",   data["Stress Index (%)"],     0,100,"%","orange"), use_container_width=True,
+    config={"responsive": True})
     with c3:
-        st.plotly_chart(create_gauge("Pest Risk",      data["Pest Risk (%)"],        0,100,"%","purple"))
-        st.plotly_chart(create_gauge("Nutrient Level", data["Nutrient Level (%)"],   0,100,"%","teal"))
+        st.plotly_chart(create_gauge("Pest Risk",      data["Pest Risk (%)"],        0,100,"%","purple"), use_container_width=True,
+    config={"responsive": True})
+        st.plotly_chart(create_gauge("Nutrient Level", data["Nutrient Level (%)"],   0,100,"%","teal"), use_container_width=True,
+    config={"responsive": True})
 
     st.subheader("Sensor Data")
     st.dataframe(pd.DataFrame([data]).round(2))
@@ -213,7 +223,7 @@ st.markdown(
     """
     <style>
     .footer {
-        position: fixed;
+        position: Draggable;
         left: 0;
         bottom: 0;
         width: 100%;
