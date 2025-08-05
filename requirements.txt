@@ -1,0 +1,22 @@
+# Core framework
+streamlit>=1.27.0
+
+# Data manipulation
+pandas>=2.0.0
+numpy>=1.24.0
+
+# Plotting & gauges
+plotly>=5.15.0
+
+# Econometric modeling
+statsmodels>=0.14.0
+
+# Geospatial mapping
+folium>=0.14.0
+streamlit-folium>=0.13.0
+
+# AI integration
+openai>=1.0.0
+
+# (Optional) For better font rendering if needed
+Pillow>=9.0.0
